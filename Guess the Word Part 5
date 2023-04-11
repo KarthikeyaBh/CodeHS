@@ -1,0 +1,75 @@
+import random
+guesses_left = 0
+words = ["amorphous","behemoth","misanthrope","zephyr"]
+secret_word = random.choice(words)
+
+#Input
+def get_guess(num):
+    while True:
+        final_guess_check = input("Do you want to guess the word[y/n]: ")
+        if final_guess_check == "y":
+            final_guess = input("Guess word: ")
+            if final_guess == secret_word:
+                print("")
+                print("")
+                print("You won! The Secret word was: " + secret_word)
+                break
+            elif final_guess != secret_word:
+                guesses_left += 2
+                print("Your guess was incorrect")
+                print(("[You have " + str(10 - guesses_left) + " incorrect guesses left]"))
+        elif final_guess_check == "n":
+            word = input("Guess a letter: ")
+            if len(word) == 0 or len(word) > 1 or word == " ":
+                print("Your guess must have one character")
+            elif not word.islower():
+                print("Your guess must be a lower case letter")
+            else:
+                return word
+        else:
+            print("")
+            print("Error: Enter a valid response")
+            print("")
+
+#Output
+dashes = ("-" * len(secret_word))
+def update_dashes(g,s,d):
+    d = list(d)
+    for i in range(len(s)):
+        if s[i] == g:
+            d[i] = g
+    d = ("").join(d)
+    return d
+
+#Check
+while guesses_left < 10:
+    #Update
+    print("Progress: " + dashes)
+    print("")
+    guess = get_guess(guesses_left)
+    
+    #If letter is in word or not satements
+    if guess in secret_word:
+        print("")
+        print("That letter is in the secret word!")
+        dashes = update_dashes(guess,secret_word,dashes)
+        print("[You have " + str(10 - guesses_left) + " incorrect guesses left]")
+        print("")
+    else:
+        print("")
+        print("That letter is not in the secret word!")
+        guesses_left += 1
+        print("[You have " + str(10 - guesses_left) + " incorrect guesses left]")
+        print("")
+        
+    #Win or Lose statements
+    if dashes == secret_word:
+        print("")
+        print("")
+        print("You won! The Secret word was: " + secret_word)
+        break
+    if guesses_left == 10:
+        print("")
+        print("")
+        print("You lose! the word was: " + secret_word)
+        break
