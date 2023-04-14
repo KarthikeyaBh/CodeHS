@@ -1,0 +1,11 @@
+#Home-Screen
+def home_screen():
+    print(" -------------------")
+    print("|GAMES LIST:        |")
+    print("|- Horse Race       |")
+    print("|- Slot Machine     |")
+    print("|- Random Walk      |")
+    print(" -------------------")
+    print("         | |         ")
+    print("     -----------     ")
+home_screen()
