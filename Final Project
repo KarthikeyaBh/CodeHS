@@ -1,3 +1,6 @@
+import os
+
+
 #Home-Screen
 def home_screen():
     print(" -------------------")
@@ -8,4 +11,26 @@ def home_screen():
     print(" -------------------")
     print("         | |         ")
     print("     -----------     ")
+    
+#Game Selection
+def game_selection():
+    while True:
+        game_selec = input("Response: ")
+        if game_selec == "Horse Race":
+            print("1")
+            break
+            #Horse_Race()
+        elif game_selec == "Slot Machine":
+            print("2")
+            break
+        elif game_selec == "Random Walk":
+            print("3")
+            break
+        else:
+            print("")
+            print("Error: Enter Valid Response!")
+            print("")
+            os.system('clear')
+            home_screen()
 home_screen()
+game_selection()
