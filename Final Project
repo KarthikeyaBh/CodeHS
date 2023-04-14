@@ -16,14 +16,25 @@ def game_selection():
     while True:
         game_selec = input("Response: ")
         if game_selec == "Horse Race":
-            print("1")
+            print("Horse Race Loading...")
+            for i in range(15500000):
+                useless = 0
+            os.system('clear')
+            Horse_Race()
             break
-            #Horse_Race()
         elif game_selec == "Slot Machine":
-            print("2")
+            print("Slot Machine Loading...")
+            for i in range(15500000):
+                useless = 0
+            os.system('clear')
+            Slot_Machine()
             break
         elif game_selec == "Random Walk":
-            print("3")
+            print("Random Walk Loading...")
+            for i in range(15500000):
+                useless = 0
+            os.system('clear')
+            Random_Walk()
             break
         else:
             print("")
@@ -33,5 +44,17 @@ def game_selection():
                 useless = 0
             os.system('clear')
             home_screen()
+#Game 1 - Horse Race
+def Horse_Race():
+    print("Horse Race")
+    
+#Game 2 - Slot_Machine
+def Slot_Machine():
+    prin("Slot Machine")
+    
+#Game 3 - Random_Walk 
+def Random_Walk():
+    print("Random Walk")
+    
 home_screen()
 game_selection()
