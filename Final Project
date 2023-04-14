@@ -1,16 +1,15 @@
 import os
 
-
 #Home-Screen
 def home_screen():
     print(" -------------------")
     print("|GAMES LIST:        |")
-    print("|- Horse Race       |")
-    print("|- Slot Machine     |")
-    print("|- Random Walk      |")
-    print(" -------------------")
-    print("         | |         ")
-    print("     -----------     ")
+    print("|- Horse Race       |  |---|")
+    print("|- Slot Machine     |  | 0 |")
+    print("|- Random Walk      |  | 0 |")
+    print(" -------------------   | 0 |")
+    print("         | |           | _.|")
+    print("     -----------       |---|")
     
 #Game Selection
 def game_selection():
@@ -30,6 +29,8 @@ def game_selection():
             print("")
             print("Error: Enter Valid Response!")
             print("")
+            for i in range(15500000):
+                useless = 0
             os.system('clear')
             home_screen()
 home_screen()
