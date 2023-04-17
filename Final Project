@@ -16,25 +16,39 @@ def game_selection():
     while True:
         game_selec = input("Response: ")
         if game_selec == "Horse Race":
-            print("Horse Race Loading...")
+            print("Launching Application...")
             for i in range(15500000):
                 useless = 0
             os.system('clear')
-            Horse_Race()
+            Horse_Race_Rules()
             break
         elif game_selec == "Slot Machine":
-            print("Slot Machine Loading...")
+            print("Launching Application...")
             for i in range(15500000):
                 useless = 0
             os.system('clear')
-            Slot_Machine()
+            Slot_Machine_Rules()
             break
         elif game_selec == "Random Walk":
-            print("Random Walk Loading...")
+            print("Launching Application...")
             for i in range(15500000):
                 useless = 0
             os.system('clear')
-            Random_Walk()
+            Random_Walk_Rules()
+            break
+        elif game_selec == "Shut Down":
+            os.system('clear')
+            print(" -------------------")
+            print("|                   |")
+            print("|  Shutting Down... |  |---|")
+            print("|                   |  | 0 |")
+            print("|                   |  | 0 |")
+            print(" -------------------   | 0 |")
+            print("         | |           | _.|")
+            print("     -----------       |---|")
+            for i in range(15500000):
+                useless = 0
+            os.system('clear')
             break
         else:
             print("")
@@ -44,17 +58,132 @@ def game_selection():
                 useless = 0
             os.system('clear')
             home_screen()
-#Game 1 - Horse Race
-def Horse_Race():
-    print("Horse Race")
+#Game 1 - Horse Race(20)
+def Horse_Race_Rules():
+    print("""HORSE RACE!
+
+Rules:
+    - You roll a die with 100 sides
+    - If the number is greater than 50, your horse moves forward by 1
+    - If the number is less than 50, nothing happens and it is the next players turn
+    - The player who reaches the end of the track wins!
+    - Up to 4 players can play the game
     
-#Game 2 - Slot_Machine
-def Slot_Machine():
-    prin("Slot Machine")
+    - SPECIAl: If you roll a 69 you win 😁
     
-#Game 3 - Random_Walk 
-def Random_Walk():
-    print("Random Walk")
+Enter [A] to begin...
+Enter [B] to go back...
+    """)
+    while True:
+        response = input("Response: ")
+        if response == "A":
+            print("")
+            print("Horse Race Loading...")
+            for i in range(15500000):
+                useless = 0
+            os.system('clear')
+            Horse_Race_Game()
+            break
+        elif response == "B":
+            print("")
+            print("Exiting Application...")
+            for i in range(15500000):
+                useless = 0
+            os.system('clear')
+            home_screen()
+            game_selection()
+            break
+        else:
+            print("")
+            print("Error: Enter Valid Response!")
+            print("")
+            for i in range(15500000):
+                useless = 0
+            os.system('clear')
+            Horse_Race_Rules()
+
+def Horse_Race_Game():
+    print("game[1]")
+
+#Game 2 - Slot Machine(20)
+def Slot_Machine_Rules():
+    print("""SLOT MACHINE!
+
+Rules:
+    
+Enter [A] to begin...
+Enter [B] to go back...
+    """)
+    while True:
+        response = input("Response: ")
+        if response == "A":
+            print("")
+            print("Slot Machine Loading...")
+            for i in range(15500000):
+                useless = 0
+            os.system('clear')
+            Slot_Machine_Game()
+            break
+        elif response == "B":
+            print("")
+            print("Exiting Application...")
+            for i in range(15500000):
+                useless = 0
+            os.system('clear')
+            home_screen()
+            game_selection()
+            break
+        else:
+            print("")
+            print("Error: Enter Valid Response!")
+            print("")
+            for i in range(15500000):
+                useless = 0
+            os.system('clear')
+            Slot_Machine_Rules()
+
+def Slot_Machine_Game():
+    print("game[2]")
+    
+#Game 3 - Random Walk(20) 
+def Random_Walk_Rules():
+    print("""RANDOM WALK!
+
+Rules:
+    
+Enter [A] to begin...
+Enter [B] to go back...
+    """)
+    while True:
+        response = input("Response: ")
+        if response == "A":
+            print("")
+            print("Horse Race Loading...")
+            for i in range(15500000):
+                useless = 0
+            os.system('clear')
+            Random_Walk_Game()
+            break
+        elif response == "B":
+            print("")
+            print("Exiting Application...")
+            for i in range(15500000):
+                useless = 0
+            os.system('clear')
+            home_screen()
+            game_selection()
+            break
+        else:
+            print("")
+            print("Error: Enter Valid Response!")
+            print("")
+            for i in range(15500000):
+                useless = 0
+            os.system('clear')
+            Random_Walk_Rules()
+    
+def Random_Walk_Game():
+    print("game[3]")
     
 home_screen()
 game_selection()
