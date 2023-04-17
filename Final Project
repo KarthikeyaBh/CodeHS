@@ -2,110 +2,171 @@ import os
 
 #Lock Screen
 def lock_screen():
-    print(" -------------------")
-    print("|SIGN IN:           |")
-    print("|       Admin       |  |---|")
-    print("|       Guest       |  | 0 |")
-    print("|                   |  | 0 |")
-    print(" -------------------   | 0 |")
-    print("         | |           | _.|")
-    print("     -----------       |---|")
-    while True:
-        account = input("Response2: ")
-        if account == "Admin":
-            admin_password = input("Enter password: ")
-            if admin_password == "Spring123!":
-                print("Logging in...")
-                for i in range(15500000):
-                    useless = 0
-                os.system('clear')
-                home_screen()
-            else:
-                print("Wrong Password!")
-                for i in range(15500000):
-                    useless = 0
-                os.system('clear')
-                lock_screen()
-        elif account == "Guest":
-            print("Logging in...")
-            for i in range(15500000):
+    print("""
+ -------------------   
+|Sign-in:           |
+|       Admin       | |----|
+|       Guest       | | () |
+|                   | | () |
+ -------------------  | () |
+         ||           | __ |
+     ----------       |----|""")
+
+    sign_in = input("Username: ")
+    if sign_in == "Admin":
+        admin_password = input("Password: ")
+        if admin_password == "Spring123!":
+            print("Signing in...")
+            for i in range(15550000):
                 useless = 0
-            os.system('clear')
+            os.system("clear")
             home_screen()
         else:
-            print("")
-            print("Error: Enter Valid Response!")
-            print("")
-            for i in range(15500000):
+            print("The password is incorrect. Try again.")
+            for i in range(15550000):
                 useless = 0
-            os.system('clear')
+            os.system("clear")
             lock_screen()
-    
+    elif sign_in == "Guest":
+        print("Signing in...")
+        for i in range(15550000):
+            useless = 0
+        os.system("clear")
+        home_screen()
+    else:
+        print("Invalid response. Please try again.")
+        for i in range(15550000):
+            useless = 0
+        os.system("clear")
+        lock_screen()
+
 #Home Screen
 def home_screen():
-    print(" -------------------")
-    print("|GAMES LIST:        |")
-    print("|- Horse Race       |  |---|")
-    print("|- Slot Machine     |  | 0 |")
-    print("|- Random Walk      |  | 0 |")
-    print(" -------------------   | 0 |")
-    print("         | |           | _.|")
-    print("     -----------       |---|")
-    game_selection()
-    
-#Game Selection
-def game_selection():
+    print("""
+ -------------------   
+|Games:             |
+|- Horse Race       | |----|
+|- Random Walk      | | () |
+|- Slot Machine     | | () |
+ -------------------  | () |
+         ||           | __ |
+     ----------       |----|""")
+
     while True:
-        game_selec = input("Response7: ")
-        if game_selec == "Horse Race":
-            print("Launching Application...")
-            for i in range(15500000):
+        game_selec = input("Response: ")
+        #Shut Down
+        if game_selec == "Shut Down":
+            os.system("clear")
+            print("""
+ -------------------   
+|                   |
+|  Shutting Down... | |----|
+|                   | | () |
+|                   | | () |
+ -------------------  | () |
+         ||           | __ |
+     ----------       |----|""")
+            for i in range(155555555):
                 useless = 0
-            os.system('clear')
-            Horse_Race_Rules()
+            os.system("clear")
             break
-        elif game_selec == "Slot Machine":
-            print("Launching Application...")
-            for i in range(15500000):
+        elif game_selec == "Sign Out":
+            os.system("clear")
+            print("""
+ -------------------   
+|                   |
+|   Signing Out...  | |----|
+|                   | | () |
+|                   | | () |
+ -------------------  | () |
+         ||           | __ |
+     ----------       |----|""")
+            for i in range(155555555):
                 useless = 0
-            os.system('clear')
-            Slot_Machine_Rules()
+            os.system("clear")
+            lock_screen()
+            break
+        
+        #Game Options
+        if game_selec == "Horse Race":
+            
+            print("Launching application...")
+            for i in range(15550000):
+                useless = 0
+            os.system("clear")
+            
+            print("""
+ -------------------   
+|                   |
+|    HORSE RACE     | |----|
+|        🐴          | | () |
+|                   | | () |
+ -------------------  | () |
+         ||           | __ |
+     ----------       |----|
+""")
+            for i in range(155555555):
+                useless = 0
+            os.system("clear")
+            Horse_Race()
+            break
+        
+        elif game_selec == "Slot Machine":
+            print("Launching application...")
+            for i in range(15550000):
+                useless = 0
+            os.system("clear")
+
+            print("""
+ -------------------   
+|                   |
+|    SLOT MACHINE   | |----|
+|        🎰          | | () |
+|                   | | () |
+ -------------------  | () |
+         ||           | __ |
+     ----------       |----|
+""")
+            for i in range(155555555):
+                useless = 0
+            os.system("clear")
+
+            Slot_Machine()
             break
         elif game_selec == "Random Walk":
-            print("Launching Application...")
-            for i in range(15500000):
+            print("Launching application...")
+            for i in range(15550000):
                 useless = 0
-            os.system('clear')
-            Random_Walk_Rules()
-            break
-        elif game_selec == "Shut Down":
-            os.system('clear')
-            print(" -------------------")
-            print("|                   |")
-            print("|  Shutting Down... |  |---|")
-            print("|                   |  | 0 |")
-            print("|                   |  | 0 |")
-            print(" -------------------   | 0 |")
-            print("         | |           | _.|")
-            print("     -----------       |---|")
-            for i in range(15500000):
+            os.system("clear")
+
+            print("""
+ -------------------   
+|                   |
+|    RANDOM WALK    | |----|
+|         🚶         | | () |
+|                   | | () |
+ -------------------  | () |
+         ||           | __ |
+     ----------       |----|
+""")
+            for i in range(155555555):
                 useless = 0
-            os.system('clear')
+            os.system("clear")
+
+            Random_Walk()
             break
         else:
             print("")
             print("Error: Enter Valid Response!")
             print("")
-            for i in range(15500000):
+            for i in range(15550000):
                 useless = 0
             os.system('clear')
             home_screen()
-
+            
 #Game 1 - Horse Race(20)
-def Horse_Race_Rules():
-    print("""HORSE RACE!
-
-Rules:
+def Horse_Race():
+    print("""Rules:
     - You roll a die with 100 sides
     - If the number is greater than 50, your horse moves forward by 1
     - If the number is less than 50, nothing happens and it is the next players turn
@@ -115,117 +176,34 @@ Rules:
     - SPECIAl: If you roll a 69 you win 😁
     
 Enter [A] to begin...
-Enter [B] to go back...
-    """)
+Enter [B] to go back...""")
+
     while True:
-        response = input("Response9: ")
+        response = input("Response: ")
         if response == "A":
             print("")
             print("Horse Race Loading...")
-            for i in range(15500000):
+            for i in range(15550000):
                 useless = 0
-            os.system('clear')
-            Horse_Race_Game()
+            os.system("clear")
             break
         elif response == "B":
             print("")
             print("Exiting Application...")
-            for i in range(15500000):
+            for i in range(15550000):
                 useless = 0
             os.system('clear')
             home_screen()
-            game_selection()
             break
         else:
             print("")
             print("Error: Enter Valid Response!")
             print("")
-            for i in range(15500000):
+            for i in range(15550000):
                 useless = 0
-            os.system('clear')
-            Horse_Race_Rules()
-
-def Horse_Race_Game():
-    print("game[1]")
-
-#Game 2 - Slot Machine(20)
-def Slot_Machine_Rules():
-    print("""SLOT MACHINE!
-
-Rules:
+            os.system("clear")
+            Horse_Race()
     
-Enter [A] to begin...
-Enter [B] to go back...
-    """)
-    while True:
-        response = input("Response8: ")
-        if response == "A":
-            print("")
-            print("Slot Machine Loading...")
-            for i in range(15500000):
-                useless = 0
-            os.system('clear')
-            Slot_Machine_Game()
-            break
-        elif response == "B":
-            print("")
-            print("Exiting Application...")
-            for i in range(15500000):
-                useless = 0
-            os.system('clear')
-            home_screen()
-            game_selection()
-            break
-        else:
-            print("")
-            print("Error: Enter Valid Response!")
-            print("")
-            for i in range(15500000):
-                useless = 0
-            os.system('clear')
-            Slot_Machine_Rules()
-
-def Slot_Machine_Game():
-    print("game[2]")
-    
-#Game 3 - Random Walk(20) 
-def Random_Walk_Rules():
-    print("""RANDOM WALK!
-
-Rules:
-    
-Enter [A] to begin...
-Enter [B] to go back...
-    """)
-    while True:
-        response = input("Response7: ")
-        if response == "A":
-            print("")
-            print("Horse Race Loading...")
-            for i in range(15500000):
-                useless = 0
-            os.system('clear')
-            Random_Walk_Game()
-            break
-        elif response == "B":
-            print("")
-            print("Exiting Application...")
-            for i in range(15500000):
-                useless = 0
-            os.system('clear')
-            home_screen()
-            game_selection()
-            break
-        else:
-            print("")
-            print("Error: Enter Valid Response!")
-            print("")
-            for i in range(15500000):
-                useless = 0
-            os.system('clear')
-            Random_Walk_Rules()
-    
-def Random_Walk_Game():
-    print("game[3]")
+    print("HORSE RACE🐴")
 
 lock_screen()
