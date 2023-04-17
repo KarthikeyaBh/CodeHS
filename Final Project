@@ -1,6 +1,47 @@
 import os
 
-#Home-Screen
+#Lock Screen
+def lock_screen():
+    print(" -------------------")
+    print("|SIGN IN:           |")
+    print("|       Admin       |  |---|")
+    print("|       Guest       |  | 0 |")
+    print("|                   |  | 0 |")
+    print(" -------------------   | 0 |")
+    print("         | |           | _.|")
+    print("     -----------       |---|")
+    while True:
+        account = input("Response2: ")
+        if account == "Admin":
+            admin_password = input("Enter password: ")
+            if admin_password == "Spring123!":
+                print("Logging in...")
+                for i in range(15500000):
+                    useless = 0
+                os.system('clear')
+                home_screen()
+            else:
+                print("Wrong Password!")
+                for i in range(15500000):
+                    useless = 0
+                os.system('clear')
+                lock_screen()
+        elif account == "Guest":
+            print("Logging in...")
+            for i in range(15500000):
+                useless = 0
+            os.system('clear')
+            home_screen()
+        else:
+            print("")
+            print("Error: Enter Valid Response!")
+            print("")
+            for i in range(15500000):
+                useless = 0
+            os.system('clear')
+            lock_screen()
+    
+#Home Screen
 def home_screen():
     print(" -------------------")
     print("|GAMES LIST:        |")
@@ -10,11 +51,12 @@ def home_screen():
     print(" -------------------   | 0 |")
     print("         | |           | _.|")
     print("     -----------       |---|")
+    game_selection()
     
 #Game Selection
 def game_selection():
     while True:
-        game_selec = input("Response: ")
+        game_selec = input("Response7: ")
         if game_selec == "Horse Race":
             print("Launching Application...")
             for i in range(15500000):
@@ -58,6 +100,7 @@ def game_selection():
                 useless = 0
             os.system('clear')
             home_screen()
+
 #Game 1 - Horse Race(20)
 def Horse_Race_Rules():
     print("""HORSE RACE!
@@ -75,7 +118,7 @@ Enter [A] to begin...
 Enter [B] to go back...
     """)
     while True:
-        response = input("Response: ")
+        response = input("Response9: ")
         if response == "A":
             print("")
             print("Horse Race Loading...")
@@ -115,7 +158,7 @@ Enter [A] to begin...
 Enter [B] to go back...
     """)
     while True:
-        response = input("Response: ")
+        response = input("Response8: ")
         if response == "A":
             print("")
             print("Slot Machine Loading...")
@@ -155,7 +198,7 @@ Enter [A] to begin...
 Enter [B] to go back...
     """)
     while True:
-        response = input("Response: ")
+        response = input("Response7: ")
         if response == "A":
             print("")
             print("Horse Race Loading...")
@@ -184,6 +227,5 @@ Enter [B] to go back...
     
 def Random_Walk_Game():
     print("game[3]")
-    
-home_screen()
-game_selection()
+
+lock_screen()
