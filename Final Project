@@ -1,4 +1,5 @@
 import os
+import random
 
 #Lock Screen
 def lock_screen():
@@ -104,11 +105,12 @@ def home_screen():
  -------------------  | () |
          ||           | __ |
      ----------       |----|
+Loading...
 """)
             for i in range(155555555):
                 useless = 0
             os.system("clear")
-            Horse_Race()
+            Horse_Race_Rules()
             break
         
         elif game_selec == "Slot Machine":
@@ -126,6 +128,7 @@ def home_screen():
  -------------------  | () |
          ||           | __ |
      ----------       |----|
+Loading...
 """)
             for i in range(155555555):
                 useless = 0
@@ -148,6 +151,7 @@ def home_screen():
  -------------------  | () |
          ||           | __ |
      ----------       |----|
+Loading...
 """)
             for i in range(155555555):
                 useless = 0
@@ -165,7 +169,7 @@ def home_screen():
             home_screen()
             
 #Game 1 - Horse Race(20)
-def Horse_Race():
+def Horse_Race_Rules():
     print("""Rules:
     - You roll a die with 100 sides
     - If the number is greater than 50, your horse moves forward by 1
@@ -186,6 +190,8 @@ Enter [B] to go back...""")
             for i in range(15550000):
                 useless = 0
             os.system("clear")
+            ShowHorse()
+            False
             break
         elif response == "B":
             print("")
@@ -194,6 +200,7 @@ Enter [B] to go back...""")
                 useless = 0
             os.system('clear')
             home_screen()
+            False
             break
         else:
             print("")
@@ -202,8 +209,47 @@ Enter [B] to go back...""")
             for i in range(15550000):
                 useless = 0
             os.system("clear")
-            Horse_Race()
+            Horse_Race_Rules
+            ()
+def ShowHorse():
+    while True:
+        num_players = int(input("# of Players(1-4): "))
+        if num_players == 1:
+            tail = 2
+            os.system("clear")
+            False
+            break
+        elif num_players == 2:
+            tail = 2
+            os.system("clear")
+            False
+            break
+        elif num_players == 3:
+            tail = 3
+            os.system("clear")
+            False
+            break
+        elif num_players == 4:
+            tail = 4
+            os.system("clear")
+            False
+            break
+        else:
+            print("")
+            print("Error: Enter Valid Response!")
+            print("")
+            for i in range(15550000):
+                useless = 0
+            os.system("clear")
     
-    print("HORSE RACE🐴")
+    print("HORSE RACE 🐴")
+    print("____________________________________________________________")
+    for i in range(1,tail +1):
+        track = ["------------------------------"]
+        print("Player " + str(i) + ": ")
+        print("")
+        print("     Start|" + "".join(track) + "|Finish")
+        print("")
+    print("____________________________________________________________")
 
 lock_screen()
