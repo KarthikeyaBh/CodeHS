@@ -40,7 +40,6 @@ def lock_screen():
             useless = 0
         os.system("clear")
         lock_screen()
-
 #Home Screen
 def home_screen():
     print("""
@@ -167,7 +166,7 @@ Loading...
                 useless = 0
             os.system('clear')
             home_screen()
-            
+      
 #Game 1 - Horse Race(20)
 def Horse_Race_Rules():
     print("""Rules:
@@ -211,6 +210,7 @@ Enter [B] to go back...""")
             os.system("clear")
             Horse_Race_Rules
             ()
+
 def ShowHorse():
     while True:
         num_players = int(input("# of Players(1-4): "))
@@ -242,14 +242,33 @@ def ShowHorse():
                 useless = 0
             os.system("clear")
     
+    def print_board(board):
+        for i in range(len(board)):
+            print(" ".join([str(x) for x in board[i]]))
+    
     print("HORSE RACE 🐴")
-    print("____________________________________________________________")
-    for i in range(1,tail +1):
-        track = ["------------------------------"]
-        print("Player " + str(i) + ": ")
-        print("")
-        print("     Start|" + "".join(track) + "|Finish")
-        print("")
-    print("____________________________________________________________")
+    print("______________________________")
+    
+    track_grid = []
+    
+    for i in range(tail):
+        track_grid.append([0] * 11)
+        
+    for row in range(tail):
+        for col in range(11):
+            track_grid[row][col]= "-"
+            
+    print_board(track_grid)
+    print("______________________________")
+    
+    while True:
+        for i in range(tail):
+            horse_num = random.randint(1,101)
+            pos = 0
+            if horse_num > 50:
+                track_grid[i][pos] == "H"
+            print("Player " + str(i) + "'s turn: " + horse_num)
+        False
+        break
 
 lock_screen()
