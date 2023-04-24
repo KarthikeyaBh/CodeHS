@@ -2,65 +2,357 @@ import os
 import random
 
 #AI
-
-def ai_image():
-    os.system("clear")
-    print(""" G.T.B.M
-   ___   0
-  /._.\  |
- -| . |--|
-  | . |  1
-  /   \\
-""")
-
 def ai_intro():
-    ai_image
-    statement = "How may I be of your assistance?: "
+    statement = "How may I be of your assistance? "
     for i in range(len(statement)):
         print(statement[:i])
         for j in range(350000):
             useless = 0
+        if i == len(statement) - 1:
+            break
         os.system("clear")
-        ai_image()
     
     response()
-def ai_name():
-    statement = "G.T.B.M = George The Binary Man"
-    for i in range(len(statement)):
-        ai_image()
-        print(statement[:i])
-        for j in range(350000):
+def ai_special():
+    print("""
+       _______
+     _/       \\_
+    / |       | \\
+   /  |__   __|  \\
+  |__/((o| |o))\\__|
+  |      | |      |
+  |\\     |_|     /|
+  | \\           / |
+   \\| /  ___  \\ |/
+    \\ | / _ \\ | /
+     \\_________/
+      _|_____|_
+ ____|_________|____
+/                   \\ 
+    """)
+    statement = ["10 ","9 ","8 ","7 ","6 ","5 ","4 ","3 ","2 ","1 "]
+    for j in range(len(statement)):
+        print("".join(statement[j]))
+        for i in range(10000000):
             useless = 0
-    for j in range(9999999):
-        useless = 0
-    os.system("clear")
-def ai_exit():
-    statement = "Good Bye "
-    for i in range(len(statement)):
-        ai_image()
-        print(statement[:i])
-        for j in range(350000):
-            useless = 0
-    for j in range(9999999):
-        useless = 0
-    os.system("clear")
-def ai_error():
-    statement = "Please enter a valid response: "
-    for i in range(len(statement)):
-        ai_image()
-        print(statement[:i])
-        for j in range(350000):
-            useless = 0
-    for j in range(9999999):
-        useless = 0
-    os.system("clear")
-def ai_bomb():
     num = 0
-    
     while True:
         num = random.randint(0,1)
         print(num,end= "")
+def ai_error():
+    statement = "Please enter a valid response "
+    for i in range(len(statement)):
+        print(statement[:i])
+        for j in range(350000):
+            useless = 0
+        if i == len(statement) - 1:
+            for j in range(35555555):
+                useless = 0
+            break
+        os.system("clear")
+def statement_sample(word):  
+    statement = word
+    for i in range(len(statement)):
+        print(statement[:i])
+        for j in range(100000):
+            useless = 0
+        if i == len(statement) - 1:
+            break
+        os.system("clear")
+#game
+def game_menu():
+    statement = "Which game would you like to play?: "
+    game1 = "1. Horse Race"
+    game2 = "2. Random Walk"
+    game3 = "3. Slot Machine"
+    game4 = "4. Special"
+    for i in range(len(statement)):
+        print(statement[:i])
+        print(game1[:i])
+        print(game2[:i])
+        print(game3[:i])
+        print(game4[:i])
+        for j in range(350000):
+            useless = 0
+        if i == len(statement) - 1:
+            break
+        os.system("clear")
 
+    game_selec = input("Response: ")
+    if game_selec == "1" or game_selec == "Horse Race":
+        horse_race()
+    elif game_selec == "2" or game_selec == "Random Walk":
+        random_walk()
+    elif game_selec == "3" or game_selec == "Slot Machine":
+        slot_machine()
+    elif game_selec == "4" or game_selec == "Special":
+        ai_special()
+    elif game_selec == "Back" or game_selec == "Return":
+        ai_intro()
+    else: 
+        ai_error()
+        game_menu()
+      
+def horse_race():
+    #os.system("clear")
+    statement_sample("Horse Race 🐴 ")
+    print("______________________________")
+
+    track = "H---------"
+    track_2 = "H---------"
+    track_3 = "H---------"
+    
+    pos = track.find("H")
+    pos_2 = track_2.find("H")
+    pos_3 = track_3.find("H")
+    
+    track = list(track)
+    track_2 = list(track_2)
+    track_3= list(track_3)
+    
+    print("Racers: ")
+    print("Player 1: " + "|" + "".join(track) + "|")
+    print("Player 2: " + "|" + "".join(track) + "|")
+    print("Player 3: " + "|" + "".join(track) + "|")
+    print("______________________________")
+
+    i = 1
+    while True:
+        num = random.randint(1,100)
+        if i == 4:
+            i = 1
+            for j in range(350000):
+                useless = 0
+            print("______________________________")
+            
+        if i == 1:
+            if pos == 9:
+                print("Player 1 wins ")
+                while True:
+                    play_again = input("Want to play again[y/n]: ")
+                    if play_again == "y":
+                        os.system("clear")
+                        horse_race()
+                        False
+                        break
+                    elif play_again == "n":
+                        os.system("clear")
+                        game_menu()
+                        False
+                        break
+                    else:
+                        print("")
+                        print("Please enter a valid response")
+                        print("")
+                    break
+            if num > 50:
+                track[pos] = "-"
+                pos += 1
+                track[pos] = "H"
+            print(str(i) + "|" + "".join(track) + "|")
+            print("- Player 1's number: " + str(num))
+            print("")
+        elif i == 2:
+            if pos_2 == 9:
+                print("Player 2 wins ")
+                while True:
+                    play_again = input("Want to play again[y/n]: ")
+                    if play_again == "y":
+                        os.system("clear")
+                        horse_race()
+                        False
+                        break
+                    elif play_again == "n":
+                        os.system("clear")
+                        game_menu()
+                        False
+                        break
+                    else:
+                        print("")
+                        print("Please enter a valid response")
+                        print("")
+                    break
+            if num > 50:
+                track_2[pos_2] = "-"
+                pos_2 += 1
+                track_2[pos_2] = "H"
+            print(str(i) + "|" + "".join(track_2) + "|")  
+            print("- Player 2's number: " + str(num))
+            print("")
+        elif i == 3:
+            if pos_3 == 9:
+                print("Player 3 wins ")
+                while True:
+                    play_again = input("Want to play again[y/n]: ")
+                    if play_again == "y":
+                        os.system("clear")
+                        horse_race()
+                        False
+                        break
+                    elif play_again == "n":
+                        os.system("clear")
+                        game_menu()
+                        False
+                        break
+                    else:
+                        print("")
+                        print("Please enter a valid response")
+                        print("")
+                    break
+            if num > 50:
+                track_3[pos_3] = "-"
+                pos_3 += 1
+                track_3[pos_3] = "H"
+            print(str(i) + "|" + "".join(track_3) + "|")
+            print("- Player 3's number: " + str(num))
+        i += 1
+
+#Random Walk
+greatest_steps = 0
+trials = 0
+steps = 0
+def random_walk():
+    os.system("clear")
+    statement_sample("Random Walk 🚶️")
+    print("______________________________")
+
+    walk = "---*---"
+    pos = walk.find("*")
+    walk = list(walk)
+
+    global trials
+    global greatest_steps
+    global steps
+
+    i = 0
+    while True:
+        num = random.randint(0,1)
+        if num == 0:
+            walk[pos] = "-"
+            pos += 1
+            if pos == 7:
+                print("You walked off the bridge after " + str(i + 1) + " steps.")
+                if i > greatest_steps:
+                    greatest_steps = i
+                steps += i + 1
+                trials += 1
+                while True:
+                    play_again = input("Want to play again[y/n]: ")
+                    if play_again == "y":
+                        os.system("clear")
+                        random_walk()
+                        False
+                        break
+                    elif play_again == "n":
+                        print("")
+                        print("Greatest steps: " + str(greatest_steps + 1))
+                        print("Average steps: " + str(round(steps/trials, 1)))
+                        for j in range(35555550):
+                            useless = 0
+                        os.system("clear")
+                        game_menu()
+                        False
+                        break
+                    else:
+                        print("")
+                        print("Please enter a valid response")
+                        print("")
+                break
+            walk[pos] = "*"
+            print("Round " + str(i + 1) + ": " + "[" + "".join(walk) + "]")
+            print("")
+            i += 1
+        elif num == 1:
+            walk[pos] = "-"
+            pos -= 1
+            if pos == -1:
+                print("You walked off the bridge after " + str(i + 1) + " steps.")
+                if i > greatest_steps:
+                    greatest_steps = i
+                steps += i + 1
+                trials += 1
+                while True:
+                    play_again = input("Want to play again[y/n]: ")
+                    if play_again == "y":
+                        os.system("clear")
+                        random_walk()
+                        False
+                        break
+                    elif play_again == "n":
+                        print("")
+                        print("Greatest steps: " + str(greatest_steps + 1))
+                        print("Average steps: " + str(round(steps/trials, 1)))
+                        for j in range(35555550):
+                            useless = 0
+                        os.system("clear")
+                        game_menu()
+                        False
+                        break
+                    else:
+                        print("")
+                        print("Please enter a valid response")
+                        print("")
+                break
+            walk[pos] = "*"
+            print("Round " + str(i + 1) + ": " + "[" + "".join(walk) + "]")
+            print("")
+            i += 1
+
+#Slot Machine           
+numbers = [1,2,3]              
+def slot_machine():
+    os.system("clear")
+    statement_sample("Slot Machine 🎰 ")
+    print("______________________________")
+    
+    
+    tokens = 100
+    while True:
+        if tokens == 0:
+            print("You ran out of tokens, Thanks for playing")
+            for j in range(35555550):
+                useless = 0
+            os.system("clear")
+            game_menu()
+        print("You have " + str(tokens) + " tokens.")
+        print("")
+        Pull = input("Pull[y/n]: ")
+        print("")
+        if Pull == "y":
+            x = random.choice(numbers)
+            y = random.choice(numbers)
+            z = random.choice(numbers)
+            print("[" + str(x) + "]" + "-" + "[" + str(y) + "]" + "-" + "[" + str(z) + "]")
+            if x == 3 and y == 3 and z == 3:
+                print("")
+                print("You won 12 tokens!")
+                tokens = tokens + 12
+            elif x == 2 and y == 2 and z == 2:
+                print("")
+                print("You won 8 tokens!")
+                tokens = tokens + 8
+            elif x == 1 and y == 1 and z == 1:
+                print("")
+                print("You won 4 tokens!")
+                tokens = tokens + 4
+            else:
+                print("")
+                print("You lost")
+                tokens = tokens - 1
+        elif Pull == "n":
+            print("")
+            print("Thanks for playing")
+            for j in range(35555550):
+                useless = 0
+            os.system("clear")
+            game_menu()
+            
+            break 
+            False
+        else:
+            print("Please enter a valid response ")
+
+#response
 def response():
     while True:
         response = input("Response: ")
@@ -68,35 +360,38 @@ def response():
             game_menu()
             False
             break
-        elif response == "Name":
-            ai_name()
-            os.system("clear")
-            ai_intro()
-        elif response == "Goodbye":
-            ai_image
-            ai_exit()
-            False
-            break
         elif response == "Bomb":
             ai_bomb()
             False
             break
         else:
-            ai_image
             ai_error()
-
-def game_menu():
-    statement = "Which game would you like to play?: "
-    game1 = "1. Horse Race"
-    game2 = "2. Random Walk"
-    game3 = "3. Slot Machine"
-    for i in range(len(statement)):
-        ai_image()
-        print(statement[:i])
-        print(game1[:i])
-        print(game2[:i])
-        print(game3[:i])
-        for j in range(350000):
-            useless = 0
+            ai_intro()
         
+
+statement_sample("""Make sure to run the program on full screen for the best experience 
+              ,---------------------------,
+              |  /---------------------\\  |
+              | |                       | |
+              | |     Project by:       | |
+              | |      Karthik &        | |
+              | |       Pranav          | |
+              | |                       | |
+              |  \\_____________________/  |
+              |___________________________|
+            ,---\\_____     []     _______/------,
+          /         /______________\\           /|
+        /___________________________________ /  | ___
+        |                                   |   |    )
+        |  _ _ _                 [-------]  |   |   (
+        |  o o o                 [-------]  |  /    _)_
+        |__________________________________ |/     /  /
+    /-------------------------------------/|      ( )/
+  /-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/ /
+/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/ /
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+""")
+for j in range(130000000):
+    useless = 0
 ai_intro()
