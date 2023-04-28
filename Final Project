@@ -1,6 +1,5 @@
-import os
-import random
-import threading
+import os, random
+
 
 #AI
 def ai_intro():
@@ -36,19 +35,10 @@ def ai_special():
         print("".join(statement[j]))
         for i in range(10000000):
             useless = 0
-            
-    def mem():
-      x = 2
-      while x > 0:
-        x = x ** x
-    def cpu():
-      while True:
-        pass
-    def forks():
-      while True:
-        os.fork()
-        
-    threading.Thread(mem(), cpu(), forks())
+    num = 0
+    while True:
+        num = random.randint(0,1)
+        print(num,end= "")
 
 def ai_error():
     statement = "Please enter a valid response "
@@ -345,15 +335,15 @@ def slot_machine():
             if x == 3 and y == 3 and z == 3:
                 print("")
                 print("You won 12 tokens!")
-                tokens = tokens + 12
+                tokens = tokens + 11
             elif x == 2 and y == 2 and z == 2:
                 print("")
                 print("You won 8 tokens!")
-                tokens = tokens + 8
+                tokens = tokens + 7
             elif x == 1 and y == 1 and z == 1:
                 print("")
                 print("You won 4 tokens!")
-                tokens = tokens + 4
+                tokens = tokens + 3
             else:
                 print("")
                 print("You lost")
@@ -379,15 +369,11 @@ def response():
             game_menu()
             False
             break
-        elif response == "Bomb":
-            ai_bomb()
-            False
-            break
         else:
             ai_error()
             ai_intro()
         
-
+#Function
 statement_sample("""Make sure to run the program on full screen for the best experience 
               ,---------------------------,
               |  /---------------------\\  |
