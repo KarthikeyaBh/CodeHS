@@ -1,0 +1,232 @@
+function start() {
+    mainMenu();
+}
+
+function displayTime() {
+    var currentDate = new Date();
+
+    var day = currentDate.getDate();
+    var month = currentDate.toLocaleString('default', { month: 'short' });
+    var hour = currentDate.getHours();
+    var minutes = currentDate.getMinutes();
+    var ampm = hour >= 12 ? 'PM' : 'AM';
+
+    if (hour > 12) {
+        hour = hour - 12;
+    }
+
+    if (hour == 0) {
+        hour = 12;
+    }
+
+    if (minutes < 10) {
+        minutes = "0" + minutes;
+    }
+    println("-----------");
+    println("QuickLists                 " + month + ", " + day + "  " + hour + ":" + minutes + " " + ampm);
+    println("--------------------------------------------");
+}
+
+function mainMenu() {
+    var userInput;
+    var output = false;
+    
+    println("Main Menu");
+    println("- Login");
+    println("- Create Account");
+    println("- Shutdown");
+    println("");
+    
+    while(true) {
+        userInput = readLine("Reply: ").toUpperCase();
+        if(userInput == "SHUTDOWN") {
+            output = true;
+            break;
+        } else if(userInput == "LOGIN") {
+            println("");
+            login();
+            break;
+        } else if(userInput == "CREATE ACCOUNT") {
+            println("");
+            createAccount();
+            break;
+        } else {
+            println("# Invalid Response");
+        }
+    }
+    
+    if(output) {
+        clear();
+        displayTime();
+        println("Shutting down...");
+    }
+}
+
+function login() {
+    var password;
+    var reattempt;
+    var wrongPwd = true;
+    
+    println("Login");
+    password = readLine("- Password: ").toUpperCase();
+    for(var i = 0; i < accountInfo.length; i++) {
+        if(accountInfo[i] == "~END~") {
+            if(password == accountInfo[i - 2]) {
+                loggedIn(i - 3);
+                wrongPwd = false;
+                break;
+            }
+        }
+    }
+    if(wrongPwd) {
+        while(true) {
+            reattempt = readLine("- Incorrect password, try again?[Y/N]: ").toUpperCase();
+            if(reattempt == "Y") {
+                println("");
+                login();
+                break;
+            } else if(reattempt == "N") {
+                println("");
+                mainMenu();
+                break;
+            } else {
+                println("# Invalid Response");
+            }
+        }
+    }
+    
+}
+
+function loggedIn(nameIndex) {
+    var userInput;
+    var item = "";
+    var removeItem;
+    var strLen;
+    var tempList = accountInfo[nameIndex + 2];
+    
+    println("");
+    displayTime();
+    println("Welcome back, " + accountInfo[nameIndex]);
+    
+    while(true) {
+        println("");
+        userInput = readLine("Task (Type 'HELP' for options): ").toUpperCase();
+        println("");
+        if(userInput == "HELP"){
+            println(`
+            1. See List
+            2. Add to List
+            3. Remove from List
+            4. Clear List
+            5. Sign out
+            `);
+        } else if(userInput == "SEE LIST" || userInput == "1") {
+            if(tempList.length == 0) {
+                println("- Your To-Do List is empty");
+            } else {
+                for(var i = 0; i < tempList.length; i++) {
+                    if(tempList[i] != "~AVOID~") {
+                        strLen = tempList[i].length;
+                        println((i + 1) + ") " + tempList[i].substring(0,1).toUpperCase() + tempList[i].substring(1,strLen).toLowerCase());
+                    }
+                }
+            }
+        } else if(userInput == "ADD TO LIST" || userInput == "2") {
+            while(true) {
+                item = readLine("Add an item (Type 'EXIT' to finish): ").toUpperCase();
+                if(item == "EXIT"){
+                    accountInfo[nameIndex + 2] = tempList;
+                    break;
+                } else {
+                    tempList.push(item);
+                }
+            }
+        } else if(userInput == "REMOVE FROM LIST" || userInput == "3") {
+            for(var i = 0; i < tempList.length; i++) {
+                strLen = tempList[i].length;
+                println((i + 1) + ") " + tempList[i].substring(0,1).toUpperCase() + tempList[i].substring(1,strLen).toLowerCase());
+            }
+            if(tempList.length == 0) {
+                println("- Your To-Do List is empty");
+            } else {
+                while(true) {
+                    removeItem = readInt("Remove an item (Type '-1' to finish): ");
+                    if(removeItem == -1) {
+                        accountInfo[nameIndex + 2] = tempList;
+                        break;
+                    } else if((removeItem - 1) < tempList.length && (removeItem - 1) > 0) {
+                        tempList[removeItem - 1] = "~AVOID~";
+                    } else {
+                        println("# Please enter a valid integer");
+                    }
+                }
+                
+            }
+        } else if(userInput == "CLEAR LIST" || userInput == "4") {
+            if(tempList.length == 0) {
+                println("");
+                println("- Your To-Do List is already empty");
+            } else {
+                tempList = [];
+                accountInfo[nameIndex + 2] = tempList;
+                println("- To-Do List cleared");
+            }
+        } else if(userInput == "SIGN OUT" || userInput == "5") {
+            tempList = [];
+            item = "";
+            mainMenu();
+            break;
+        }
+        
+    }
+}
+
+var accountInfo = ["Karthikeya Bhagavatula","0709",[],"~END~"];
+function createAccount() {
+    var name;
+    var password;
+    var confirmation;
+    
+    println("Create Account");
+    name = readLine("- Name: ");
+    
+    while(true) {
+        password = readLine("- Password: ").toUpperCase();
+        
+        for(var i = 0; i < accountInfo.length; i++) {
+            if(accountInfo[i] == "~END~") {
+                if(password == accountInfo[i - 2]) {
+                    println("# This password is taken, please enter another password");
+                    println("");
+                    createAccount();
+                }
+            }
+        }
+        
+        if(password.length >= 4) {
+            break;
+        } else {
+            println("# Password must be at least 4 characters in length");
+        }
+    }
+    
+    while(true) {
+        confirmation = readLine("- Create?[Y/N]: ").toUpperCase();
+        if(confirmation == "Y") {
+            accountInfo.push(name);
+            accountInfo.push(password);
+            accountInfo.push([]);
+            accountInfo.push("~END~");
+            
+            println("");
+            mainMenu();
+            break;
+        } else if(confirmation == "N") {
+            println("");
+            createAccount();
+            break;
+        } else {
+            println("# Invalid Response");
+        }
+    }
+}
