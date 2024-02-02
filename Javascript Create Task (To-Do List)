@@ -22,6 +22,7 @@ function mainMenu () {
             break;
         } else if (userInput == 3) {
             clear();
+            println("Program terminated");
             break;
         } else {
             println("# Invalid Response")
@@ -30,13 +31,15 @@ function mainMenu () {
 }
 
 var accountInfo = [];
-//var accountInfo = [["Karthikeya Bhagavatula","bhkar",709,[]],];
+//var accountInfo = [["Karthikeya Bhagavatula","bhkar",1579,[],]];
 function newAccount () {
     var tempList = [];
     var name;
     var formattedName = "";
     var char;
     var username;
+    var profile;
+    var userExist;
     var password;
     var confirmation;
     
@@ -56,11 +59,23 @@ function newAccount () {
     }
     while (true) {
         username = readLine("> Generate a username that is 4 characters or more: ").toUpperCase();
-        if (username.length >= 4) {
-            break;
-        } else {
+        for (var i = 0; i < accountInfo.length; i++) {
+            profile = accountInfo[i];
+            if (username == profile[1]) {
+                userExist = true;
+            } else {
+                userExist = false;
+            }
+        }
+        
+        if (userExist) {
+            println("# Username already exists, please generate a new username");
+            println("");
+        } else if (username.length < 4) {
             println("# The username is less than 4 characters in length");
             println("");
+        } else {
+            break;
         }
     }
     while (true) {
@@ -83,7 +98,7 @@ function newAccount () {
             login();
             break;
         } else if (confirmation == "N") {
-            createAccount();
+            newAccount();
             break;
         } else {
             println("# Invalid Response");
@@ -143,31 +158,40 @@ function userMenu (userData) {
     var removeItem;
     
     var newName;
-    var nameConfirmation;
+    var char;
+    var formattedName = "";
     var newUsername;
-    var usernameConfirmation;
-    var newPwd;
-    var pwdConfirmation;
+    var newPassword;
     
     
     println("");
     println("Welcome back, " + name);
+    println("");
+    println("1. See To-Do List");
+    println("2. Add to To-Do List");
+    println("3. Remove from To-Do List");
+    println("4. Clear To-Do List");
+    println("- Change Account Information");
+    println("   5.1) Change name");
+    println("   5.2) Change username");
+    println("   5.3) Change password");
+    println("6. Logout");
     while (true) {
         println("");
-        task = readFloat("> Type the number of the task you would like to perform (`0` for commands): ");
+        task = readFloat("> Type the number of the task you would like to perform (type `0` to list commands): ");
         if (task == -1) {
             break;
         } else if (task == 0) {
             println("");
-                println("1. See To-Do List");
-                println("2. Add to To-Do List");
-                println("3. Remove from To-Do List");
-                println("4. Clear To-Do List");
-                println("- Change Account Information");
-                println("   5.1) Change name");
-                println("   5.2) Change username");
-                println("   5.3) Change password");
-                println("6. Logout");
+            println("1. See To-Do List");
+            println("2. Add to To-Do List");
+            println("3. Remove from To-Do List");
+            println("4. Clear To-Do List");
+            println("- Change Account Information");
+            println("   5.1) Change name");
+            println("   5.2) Change username");
+            println("   5.3) Change password");
+            println("6. Logout");
         } else if (task == 1) {
             println("");
             if(toDoList.length == 0) {
@@ -221,53 +245,41 @@ function userMenu (userData) {
         } else if (task == 5.1 || task == 5.2 || task == 5.3) {
             println("");
             if (task == 5.1) {
-                newName = readLine("> New Name: ");
-                while(true) {
-                    nameConfirmation = readLine("> Update?[Y/N]: ").toUpperCase();
-                    if(nameConfirmation == "Y") {
-                        println("");
-                        login();
-                        break;
-                    } else if(nameConfirmation == "N") {
-                        println("");
-                        mainMenu();
-                        break;
-                    } else {
-                        println("# Invalid Response");
+                newName = readLine("> Enter New Name: ");
+                for (var i = 0; i < newName.length; i++) {
+                    char = newName.substring(i, i + 1);
+                    if (i == 0) {
+                        char = char.toUpperCase();
+                    } else if (char == " ") {
+                        formattedName += " ";
+                        char = name.substring(i + 1, i + 2).toUpperCase();
+                        i = i + 1;
                     }
+                    formattedName += char;
                 }
+                name = formattedName;
             } else if (task == 5.2) {
-                newUsername = readLine("> New Username: ");
-                while(true) {
-                    usernameConfirmation = readLine("> Update?[Y/N]: ").toUpperCase();
-                    if(usernameConfirmation == "Y") {
-                        println("");
-                        login();
-                        break;
-                    } else if(usernameConfirmation == "N") {
-                        println("");
-                        mainMenu();
+                while (true) {
+                    newUsername = readLine("> Generate a new username that is 4 characters or more: ").toUpperCase();
+                    if (newUsername.length >= 4) {
                         break;
                     } else {
-                        println("# Invalid Response");
+                        println("# The username is less than 4 characters in length");
+                        println("");
                     }
                 }
+                username = newUsername
             } else if (task == 5.3) {
-                newPassword = readLine("> New Password: ");
-                while(true) {
-                    pwdConfirmation = readLine("> Update?[Y/N]: ").toUpperCase();
-                    if(pwdConfirmation == "Y") {
-                        println("");
-                        login();
-                        break;
-                    } else if(pwdConfirmation == "N") {
-                        println("");
-                        mainMenu();
+                while (true) {
+                    newPassword = readInt("> Generate a new numerical password that is 4 numbers in length: ");
+                    if (newPassword.toString().length <= 4) {
                         break;
                     } else {
-                        println("# Invalid Response");
+                        println("# The password is more that 4 characters in length");
+                        println("");
                     }
                 }
+                password = newPassword
             }
         } else if (task == 6) {
             userData[0] = name;
